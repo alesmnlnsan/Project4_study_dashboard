@@ -1,35 +1,52 @@
 import React, { useEffect, useState } from 'react';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { TimeClock } from '@mui/x-date-pickers/TimeClock';
+import './Clock.css';
 
 export default function Clock() {
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [showClock, setShowClock] = useState(true);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
 
-    // Clean up the interval when the component unmounts
     return () => clearInterval(intervalId);
   }, []);
 
   const formatTime = (time) => {
-    // Format the time as per your requirement
     const hours = time.getHours().toString().padStart(2, '0');
     const minutes = time.getMinutes().toString().padStart(2, '0');
     const seconds = time.getSeconds().toString().padStart(2, '0');
-    return `${hours}:${minutes}:${seconds}`;
+
+    return (
+      <div className="digit-container">
+        <div className="digit">{hours.charAt(0)}</div>
+        <div className="digit">{hours.charAt(1)}</div>
+        <div className="digit-separator">:</div>
+        <div className="digit">{minutes.charAt(0)}</div>
+        <div className="digit">{minutes.charAt(1)}</div>
+        <div className="digit-separator">:</div>
+        <div className="digit">{seconds.charAt(0)}</div>
+        <div className="digit">{seconds.charAt(1)}</div>
+      </div>
+    );
+  };
+
+  const handleToggleClock = () => {
+    setShowClock(!showClock);
   };
 
   return (
-    <div>
-      <h1>Real Clock</h1>
-      <p>Current Time: {formatTime(currentTime)}</p>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <TimeClock />
-      </LocalizationProvider>
+    <div className="clock">
+      <button onClick={handleToggleClock}>
+        {showClock ? 'Hide Clock' : 'Show Clock'}
+      </button>
+      {showClock && (
+        <>
+          <h1>Clock</h1>
+          {formatTime(currentTime)}
+        </>
+      )}
     </div>
   );
 }

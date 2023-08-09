@@ -1,0 +1,33 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007bff;
+    padding: 10px 20px;
+  }
+  
+  .navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navbar-link {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .navbar-logout {
+    background-color: #dc3545;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .navbar-user {
+    color: white;
+  }
+  

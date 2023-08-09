@@ -1,6 +1,80 @@
-li {
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-    display: flex;
-    justify-content: space-between;
-  }
+
+.header {
+  text-align: center;
+  font-size: medium;
+}
+
+.to-do-form {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: medium;
+}
+
+.form-row {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.button-add {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: medium;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  font-size: medium;
+}
+
+.list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: medium;
+}
+
+.list label {
+  display: flex;
+  align-items: center;
+  font-size: medium;
+}
+
+.list input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.list button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: medium;
+}
+
+.editing {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: medium;
+}
+
+.editing input[type="text"] {
+  flex-grow: 1;
+  margin-right: 10px;
+  font-size: medium;
+}
+
+.editing button {
+  background-color: #4caf50;
+  font-size: medium;
+}
