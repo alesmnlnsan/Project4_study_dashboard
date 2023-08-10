@@ -132,7 +132,7 @@ export default function PomodoroTimer() {
                 <button onClick={toggleRestTimer}>{isRestActive ? 'Pause' : 'Start'}</button>
                 <label htmlFor='customRestTime'>Set Rest Time (minutes):</label>
                 <input
-                  type='number'
+                  type='range'
                   id='customRestTime'
                   value={customRestTime}
                   onChange={handleCustomRestTimeChange}

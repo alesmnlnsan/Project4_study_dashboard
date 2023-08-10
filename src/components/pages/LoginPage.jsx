@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export default function LoginPage({ onLogin }) {
@@ -7,7 +7,7 @@ export default function LoginPage({ onLogin }) {
     password: '',
   });
   const [error, setError] = useState('');
-  const [showSignUp, setShowSignUp] = useState(false); 
+  const [showSignUp, setShowSignUp] = useState(false);
   const [signUpFormData, setSignUpFormData] = useState({
     username: '',
     signUpEmail: '',
