@@ -1,53 +1,59 @@
-/** @format */
-
-// import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './Reminder.css';
 
-export default function Reminder({ user }) {
-  //   const [reminders, setReminders] = useState([]);
-  //   const [newReminder, setNewReminder] = useState('');
-//   const [showReminders, setShowReminders] = useState(false);
+export default function Reminder({ user_id }) {
+  const [reminders, setReminders] = useState([]);
+  const [newReminder, setNewReminder] = useState('');
+  const [showReminders, setShowReminders] = useState(false);
 
-  //   useEffect(() => {
-  //     const fetchReminders = () => {
-  //       axios
-  //         .get(`/api/reminders/${user.user_id}`)
-  //         .then((res) => {
-  //           setReminders(res.data);
-  //         })
-  //         .catch((error) => {
-  //           console.error('Error', error);
-  //         });
-  //     };
+  useEffect(() => {
+    fetchReminders();
+  });
 
-  //     fetchReminders();
-  //   }, [user.user_id]);
+  const fetchReminders = () => {
+    axios
+      .get('/api/reminders', {
+        params: { user_id },
+      })
+      .then((res) => {
+        setReminders(res.data);
+      })
+      .catch((error) => {
+        console.error('Error', error);
+      });
+  };
 
-  //   const addReminder = () => {
-  //     if (newReminder.trim() === '') return;
+  const addReminder = () => {
+    if (newReminder.trim() === '') return;
 
-  //     axios
-  //       .post('/api/reminders', { reminder: newReminder, user_id: user.user_id })
-  //       .then((res) => {
-  //         setReminders([...reminders, res.data]);
-  //         setNewReminder('');
-  //       })
-  //       .catch((error) => {
-  //         console.error('Error', error);
-  //       });
-  //   };
+    const reminderData = {
+      reminder: newReminder,
+      user_id: user_id,
+      reminder_date: new Date().toISOString(),
+    };
 
-//   const toggleReminders = () => {
-//     setShowReminders(!showReminders);
-//   };
+    axios
+      .post('/api/reminders', reminderData)
+      .then((res) => {
+        setReminders([...reminders, res.data]);
+        setNewReminder('');
+      })
+      .catch((error) => {
+        console.error('Error', error);
+      });
+  };
+
+  const toggleReminders = () => {
+    setShowReminders(!showReminders);
+  };
 
   return (
     <div className="reminder">
-      {/* <button className="toggle-button" onClick={toggleReminders}>
+      <button className="toggle-button" onClick={toggleReminders}>
         {showReminders ? 'Hide Reminders' : 'Show Reminders'}
       </button>
-  
+
       <h2>Reminders</h2>
       {showReminders && (
         <ul>
@@ -56,7 +62,7 @@ export default function Reminder({ user }) {
           ))}
         </ul>
       )}
-    
+
       {showReminders && (
         <div className="add-reminder">
           <input
@@ -67,7 +73,7 @@ export default function Reminder({ user }) {
           />
           <button onClick={addReminder}>Add</button>
         </div>
-      )} */}
+      )}
     </div>
   );
 }

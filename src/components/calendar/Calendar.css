@@ -15,8 +15,8 @@
   }
   
   .StaticDatePickerLandscape .MuiStaticDatePicker-root {
-    width: 50%; /* Adjust the width as needed */
-    max-width: 100px; /* Adjust the max-width as needed */
+    width: 50%; 
+    max-width: 100px; 
   }
   
   .StaticDatePickerLandscape .MuiFormControl-root {

@@ -12,6 +12,8 @@ export default function PomodoroTimer() {
   const [customWorkTime, setCustomWorkTime] = useState(25);
   const [customRestTime, setCustomRestTime] = useState(5);
   const [showTimer, setShowTimer] = useState(true);
+  const [timerDone, setTimerDone] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     let workInterval, restInterval;
@@ -22,6 +24,8 @@ export default function PomodoroTimer() {
           if (workMinutes === 0) {
             clearInterval(workInterval);
             setIsWorkActive(false);
+            setTimerDone(true);
+            setShowPopup(true);
           } else {
             setWorkMinutes(workMinutes - 1);
             setWorkSeconds(59);
@@ -40,6 +44,8 @@ export default function PomodoroTimer() {
           if (restMinutes === 0) {
             clearInterval(restInterval);
             setIsRestActive(false);
+            setTimerDone(true);
+            setShowPopup(true);
           } else {
             setRestMinutes(restMinutes - 1);
             setRestSeconds(59);
@@ -52,11 +58,16 @@ export default function PomodoroTimer() {
       clearInterval(restInterval);
     }
 
+    if ((isWorkActive || isRestActive) && timerDone) {
+      setShowPopup(true);
+    }
+
     return () => {
       clearInterval(workInterval);
       clearInterval(restInterval);
     };
-  }, [isWorkActive, isRestActive, workMinutes, workSeconds, restMinutes, restSeconds]);
+  }, [isWorkActive, isRestActive, workMinutes, workSeconds, restMinutes, restSeconds, timerDone]);
+
 
   const toggleWorkTimer = () => {
     setIsWorkActive(!isWorkActive);
@@ -73,6 +84,8 @@ export default function PomodoroTimer() {
     setRestSeconds(0);
     setIsWorkActive(false);
     setIsRestActive(false);
+    setTimerDone(false); 
+    setShowPopup(false); 
   };
 
   const handleCustomWorkTimeChange = (event) => {
@@ -119,7 +132,7 @@ export default function PomodoroTimer() {
                 <button onClick={toggleRestTimer}>{isRestActive ? 'Pause' : 'Start'}</button>
                 <label htmlFor='customRestTime'>Set Rest Time (minutes):</label>
                 <input
-                  type='range'
+                  type='number'
                   id='customRestTime'
                   value={customRestTime}
                   onChange={handleCustomRestTimeChange}
@@ -130,6 +143,14 @@ export default function PomodoroTimer() {
             <div className='timer-controls'>
               <button onClick={resetTimers}>Reset</button>
             </div>
+          </div>
+        </div>
+      )}
+      {showPopup && (
+        <div className='popup'>
+          <div className='popup-content'>
+            <p>Timer is over!</p>
+            <button onClick={() => setShowPopup(false)}>Close</button>
           </div>
         </div>
       )}
