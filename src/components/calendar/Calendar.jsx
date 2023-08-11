@@ -4,6 +4,7 @@ import './Calendar.css';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { StaticDatePicker, PickersDay } from '@mui/x-date-pickers';
+import { FaToggleOff, FaToggleOn } from 'react-icons/fa';
 
 export default function StaticDatePickerLandscape() {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -44,7 +45,7 @@ export default function StaticDatePickerLandscape() {
   return (
     <div className="calendar-container">
       <button className="toggle-button" onClick={handleToggleCalendar}>
-        {showCalendar ? 'Hide Calendar' : 'Show Calendar'}
+        {showCalendar ? <FaToggleOff /> : <FaToggleOn />} CALENDAR
       </button>
       <div className="calendar-wrapper">
         {showCalendar && (

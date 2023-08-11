@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Reminder.css';
+import './Reminder.css'; 
+import { FaToggleOff, FaToggleOn } from 'react-icons/fa';
 
 export default function Reminder({ user_id }) {
   const [reminders, setReminders] = useState([]);
@@ -9,7 +10,7 @@ export default function Reminder({ user_id }) {
 
   useEffect(() => {
     fetchReminders();
-  });
+  }, []); 
 
   const fetchReminders = () => {
     axios
@@ -20,7 +21,7 @@ export default function Reminder({ user_id }) {
         setReminders(res.data);
       })
       .catch((error) => {
-        console.error('Error', error);
+        console.log('Error', error);
       });
   };
 
@@ -51,17 +52,17 @@ export default function Reminder({ user_id }) {
   return (
     <div className="reminder">
       <button className="toggle-button" onClick={toggleReminders}>
-        {showReminders ? 'Hide Reminders' : 'Show Reminders'}
+        {showReminders ? <FaToggleOff /> : <FaToggleOn />} REMINDERS
       </button>
 
-      <h2>Reminders</h2>
       {showReminders && (
+      <h2>Reminders</h2>
+      )}
         <ul>
           {reminders.map((reminder) => (
             <li key={reminder.reminder_id}>{reminder.reminder}</li>
-          ))}
+            ))}
         </ul>
-      )}
 
       {showReminders && (
         <div className="add-reminder">

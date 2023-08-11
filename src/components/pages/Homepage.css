@@ -1,180 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alike+Angular&display=swap');
+
 body {
-    background-image: url('../../assets/dashboard_1.gif');
-    background-size: cover;
-    background-color: #3183fd; /* Fallback color */
-  }
+  background-image: url('../../assets/dashboard_1.gif');
+  background-size: cover;
+  background-color: #3183fd; 
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
 
 .homepage-container {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: auto 1fr;
-    grid-template-areas:
-      "header header header"
-      "left-sidebar top-middle right-sidebar"
-      "left-sidebar middle right-sidebar"
-      "bottom-bar bottom-bar bottom-bar";
-    min-height: 100vh;
-  }
-  
-  .header {
-    grid-area: header;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  body {
-    background-image: url('../../assets/dashboard_1.gif');
-    background-size: cover;
-    background-color: #3183fd; /* Fallback color */
-  }
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "header header header"
+    "left-sidebar top-middle right-sidebar"
+    "left-sidebar middle right-sidebar"
+    "bottom-bar bottom-bar bottom-bar";
+  min-height: 100vh;
+}
 
-.homepage-container {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: auto 1fr;
-    grid-template-areas:
-      "header header header"
-      "left-sidebar top-middle right-sidebar"
-      "left-sidebar middle right-sidebar"
-      "bottom-bar bottom-bar bottom-bar";
-    min-height: 100vh;
-  }
-  
-  .header {
-    grid-area: header;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Update the .left-sidebar component */
-/* Update the .left-sidebar component */
+.header {
+  grid-area: header;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  font-family: 'Alike Angular', serif;
+  font-size: 24px;
+}
+
 .left-sidebar {
-    position: relative;
-    grid-area: left-sidebar;
-    padding: 10px;
-    background-color: transparent;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  .left-sidebar::before {
-    content: "";
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    background-color: rgba(240, 240, 240, 0.8);
-    backdrop-filter: blur(10px);
-    pointer-events: none;
-    z-index: -1;
-  }
-  
-  /* Update the .top-middle component */
-  .top-middle {
-    position: relative;
-    grid-area: top-middle;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    background-color: transparent;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  .top-middle::before {
-    content: "";
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    background-color: rgba(240, 240, 240, 0.8);
-    backdrop-filter: blur(10px);
-    pointer-events: none;
-    z-index: -1;
-  }
-  
-  /* Update the .middle component */
-  .middle {
-    position: relative;
-    grid-area: middle;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background-color: transparent;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  .middle::before {
-    content: "";
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    right: 20px;
-    bottom: 20px;
-    background-color: rgba(240, 240, 240, 0.8);
-    backdrop-filter: blur(10px);
-    pointer-events: none;
-    z-index: -1;
-  }
-  
-  /* Update the .right-sidebar component */
-  .right-sidebar {
-    position: relative;
-    grid-area: right-sidebar;
-    padding: 10px;
-    background-color: transparent;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  .right-sidebar::before {
-    content: "";
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    background-color: rgba(240, 240, 240, 0.8);
-    backdrop-filter: blur(10px);
-    pointer-events: none;
-    z-index: -1;
-  }
-  
-  /* Update the .bottom-bar component */
-  .bottom-bar {
-    position: relative;
-    grid-area: bottom-bar;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    background-color: transparent;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  .bottom-bar::before {
-    content: "";
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    background-color: rgba(240, 240, 240, 0.8);
-    backdrop-filter: blur(10px);
-    pointer-events: none;
-    z-index: -1;
-  }
-  
+  position: relative;
+  grid-area: left-sidebar;
+  padding: 10px;
+  background-color: transparent;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  font-family: 'Alike Angular', serif;
+}
+
+.left-sidebar::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background-color: rgba(240, 240, 240, 0.8);
+  backdrop-filter: blur(80px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.top-middle {
+  position: relative;
+  grid-area: top-middle;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: transparent;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  font-family: 'Alike Angular', serif;
+}
+
+.top-middle::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background-color: rgba(240, 240, 240, 0.8);
+  backdrop-filter: blur(80px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.middle {
+  position: relative;
+  grid-area: middle;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: transparent;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  font-family: 'Alike Angular', serif;
+}
+
+.middle::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  background-color: rgba(240, 240, 240, 0.8);
+  backdrop-filter: blur(80px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.right-sidebar {
+  position: relative;
+  grid-area: right-sidebar;
+  padding: 10px;
+  background-color: transparent;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  font-family: 'Alike Angular', serif;
+}
+
+.right-sidebar::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background-color: rgba(240, 240, 240, 0.8);
+  backdrop-filter: blur(80px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bottom-bar {
+  position: relative;
+  grid-area: bottom-bar;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: transparent;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  font-family: 'Alike Angular', serif;
+}
+
+.bottom-bar::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background-color: rgba(240, 240, 240, 0.8);
+  backdrop-filter: blur(80px);
+  pointer-events: none;
+  z-index: -1;
+}

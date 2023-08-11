@@ -1,42 +1,40 @@
-
-.App {
-  text-align: center;
-  padding: 20px;
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alike+Angular&display=swap');
+* {
+  justify-content: center;
+  font-family: 'Alike Angular', serif;
 }
-
-.authentication {
+.header-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-nav {
+.header,
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #007bff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  margin-bottom: 20px;
+  padding: 20px 0;
+  background-color: #8d3614;
+  width: 100%;
 }
 
-nav h2 {
-  font-size: 18px;
-  color: #fff;
+.header h2,
+.navbar h2 {
+  font-family: 'Alike Angular', serif;
+  font-size: 50px;
+  font-weight: bolder;
+  color: #f4f1de;
   margin: 0;
 }
 
-nav button {
-  font-size: 14px;
-  color: #fff;
-  background-color: #dc3545;
-  border: none;
-  border-radius: 3px;
-  padding: 5px 10px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+.App {
+  text-align: center;
+  padding: 20px;
+  justify-content: center;
 }
 
-nav button:hover {
-  background-color: #c82333;
+.authentication {
+  display: flex;
+  align-items: center;
 }

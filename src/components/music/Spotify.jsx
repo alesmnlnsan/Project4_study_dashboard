@@ -1,8 +1,15 @@
 /** @format */
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Spotify.css';
+import {
+  FaPlay,
+  FaPause,
+  FaForward,
+  FaToggleOff,
+  FaToggleOn,
+} from 'react-icons/fa';
 
 const CLIENT_ID = 'd33a8c6109e8402e93f971032cce5db8';
 const REDIRECT_URI = 'http://localhost:3003/music';
@@ -17,6 +24,7 @@ export default function Spotify() {
   const [searchKey, setSearchKey] = useState('');
   const [playlists, setPlaylists] = useState([]);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTrackName, setCurrentTrackName] = useState('');
   const [showSpotify, setShowSpotify] = useState(true);
 
   useEffect(() => {
@@ -37,8 +45,6 @@ export default function Spotify() {
     setToken(accessToken || '');
 
     window.onSpotifyWebPlaybackSDKReady = () => {
-      console.log('Spotify Web Playback SDK is ready');
-
       const player = new window.Spotify.Player({
         name: 'My Spotify Player',
         getOAuthToken: (cb) => cb(token),
@@ -57,16 +63,14 @@ export default function Spotify() {
               },
             }
           )
-          .then(() => {
-            console.log('Player ready and waiting for playback...');
-          })
           .catch((error) => {
             console.error('Error starting playback:', error);
           });
 
         player.addListener('player_state_changed', (state) => {
-          if (state) {
+          if (state && state.track_window && state.track_window.current_track) {
             setIsPlaying(!state.paused);
+            setCurrentTrackName(state.track_window.current_track.name);
           }
         });
 
@@ -101,7 +105,7 @@ export default function Spotify() {
         setPlaylists([]);
       }
     } catch (error) {
-      console.log('Error', error);
+      console.error('Error fetching playlists:', error);
     }
   };
 
@@ -139,7 +143,6 @@ export default function Spotify() {
                 }
               )
               .then(() => {
-                console.log('Playing tracks...');
                 setIsPlaying(true); // Set isPlaying to true when playback starts
               })
               .catch((error) => {
@@ -169,7 +172,6 @@ export default function Spotify() {
             },
           }
         );
-        console.log('Playback paused.');
         setIsPlaying(false);
       } else {
         await axios.put(
@@ -181,7 +183,6 @@ export default function Spotify() {
             },
           }
         );
-        console.log('Playback resumed.');
         setIsPlaying(true);
       }
     } catch (error) {
@@ -213,7 +214,9 @@ export default function Spotify() {
   return (
     <div className='Music'>
       <div className='toggle-button'>
-        <button onClick={toggleSpotifyArea}>Toggle Spotify Area</button>
+        <button onClick={toggleSpotifyArea}>
+          {showSpotify ? <FaToggleOff /> : <FaToggleOn />}   SPOTIFY
+        </button>
       </div>
       {showSpotify && (
         <header className='App-header'>
@@ -251,16 +254,28 @@ export default function Spotify() {
         </header>
       )}
 
+      <div className='track-info'>
+        <p className='current-track'>{currentTrackName}</p>
+      </div>
+
       <div className='play-pause'>
         {isPlaying ? (
           <>
-            <button onClick={pausePlayback}>Pause</button>
-            <button onClick={nextTrack}>Next Track</button>
+            <button onClick={pausePlayback}>
+              <FaPause className='pause-icon' />
+            </button>
+            <button onClick={nextTrack}>
+              <FaForward className='next-icon' />
+            </button>
           </>
         ) : (
           <>
-            <button onClick={pausePlayback}>Play</button>
-            <button onClick={nextTrack}>Next Track</button>
+            <button onClick={pausePlayback}>
+              <FaPlay className='play-icon' />
+            </button>
+            <button onClick={nextTrack}>
+              <FaForward className='next-icon' />
+            </button>
           </>
         )}
       </div>

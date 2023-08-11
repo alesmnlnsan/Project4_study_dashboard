@@ -1,84 +1,64 @@
-.timer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #f0f0f0;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    margin-top: 10px;
-  }
-  
-  .pomodoro-timer {
-    margin-top: 10px;
-  }
-  
-  .timer-display {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .work-timer,
-  .rest-timer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-    flex: 1;
-  }
-  
-  button {
-    padding: 4px 8px;
-    font-size: 14px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  input[type='range'] {
-    width: 80%;
-    max-width: 150px;
-  }
-  
-  .timer-controls {
-    margin-top: 10px;
-  }
+.timer-display {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
 
-  .popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  .popup-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    text-align: center;
-  }
-  
-  .popup button {
-    padding: 10px 20px;
-    margin-top: 10px;
-    background-color: #3183fd;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
+.work-timer,
+.rest-timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.timer-label {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.timer-value {
+  font-size: 24px;
+  color: #2471d6;
+}
+
+.timer-controls {
+  margin-top: 10px;
+}
+
+.timer-controls button {
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #8d3614;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.timer-controls button:hover {
+  background-color: #5e220a;
+}
+
+.timer-button:hover {
+  background-color: #5e220a;
+}
+
+.timer-input-label {
+  font-size: 14px;
+  color: #555;
+}
+
+.timer-input {
+  width: 100%;
+  max-width: 150px;
+}

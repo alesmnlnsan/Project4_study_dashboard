@@ -1,6 +1,9 @@
+/** @format */
+
 import React, { useState, useEffect } from 'react';
 import Clock from './Clock';
 import './Timer.css';
+import { FaToggleOff, FaToggleOn } from 'react-icons/fa';
 
 export default function PomodoroTimer() {
   const [workMinutes, setWorkMinutes] = useState(25);
@@ -66,8 +69,15 @@ export default function PomodoroTimer() {
       clearInterval(workInterval);
       clearInterval(restInterval);
     };
-  }, [isWorkActive, isRestActive, workMinutes, workSeconds, restMinutes, restSeconds, timerDone]);
-
+  }, [
+    isWorkActive,
+    isRestActive,
+    workMinutes,
+    workSeconds,
+    restMinutes,
+    restSeconds,
+    timerDone,
+  ]);
 
   const toggleWorkTimer = () => {
     setIsWorkActive(!isWorkActive);
@@ -84,8 +94,8 @@ export default function PomodoroTimer() {
     setRestSeconds(0);
     setIsWorkActive(false);
     setIsRestActive(false);
-    setTimerDone(false); 
-    setShowPopup(false); 
+    setTimerDone(false);
+    setShowPopup(false);
   };
 
   const handleCustomWorkTimeChange = (event) => {
@@ -104,8 +114,8 @@ export default function PomodoroTimer() {
 
   return (
     <div>
-      <button onClick={toggleTimer}>
-        {showTimer ? 'Hide Timer' : 'Show Timer'}
+      <button className='toggle-btn' onClick={toggleTimer}>
+        {showTimer ? <FaToggleOff /> : <FaToggleOn />} TIMER
       </button>
       {showTimer && (
         <div className='timer'>
@@ -116,10 +126,19 @@ export default function PomodoroTimer() {
             <h2>Pomodoro Timer</h2>
             <div className='timer-display'>
               <div className='work-timer'>
-                Work: {workMinutes.toString().padStart(2, '0')}:{workSeconds.toString().padStart(2, '0')}
-                <button onClick={toggleWorkTimer}>{isWorkActive ? 'Pause' : 'Start'}</button>
-                <label htmlFor='customWorkTime'>Set Work Time (minutes):</label>
+                <p className='timer-label'>WORK</p>
+                <p className='timer-value'>
+                  {workMinutes.toString().padStart(2, '0')}:
+                  {workSeconds.toString().padStart(2, '0')}
+                </p>
+                <button className='timer-button' onClick={toggleWorkTimer}>
+                  {isWorkActive ? 'Pause' : 'Start'}
+                </button>
+                <label className='timer-input-label' htmlFor='customWorkTime'>
+                  Set Time (minutes):
+                </label>
                 <input
+                  className='timer-input'
                   type='range'
                   id='customWorkTime'
                   value={customWorkTime}
@@ -128,10 +147,19 @@ export default function PomodoroTimer() {
                 />
               </div>
               <div className='rest-timer'>
-                Rest: {restMinutes.toString().padStart(2, '0')}:{restSeconds.toString().padStart(2, '0')}
-                <button onClick={toggleRestTimer}>{isRestActive ? 'Pause' : 'Start'}</button>
-                <label htmlFor='customRestTime'>Set Rest Time (minutes):</label>
+                <p className='timer-label'>REST</p>
+                <p className='timer-value'>
+                  {restMinutes.toString().padStart(2, '0')}:
+                  {restSeconds.toString().padStart(2, '0')}
+                </p>
+                <button className='timer-button' onClick={toggleRestTimer}>
+                  {isRestActive ? 'Pause' : 'Start'}
+                </button>
+                <label className='timer-input-label' htmlFor='customRestTime'>
+                  Set Time (minutes):
+                </label>
                 <input
+                  className='timer-input'
                   type='range'
                   id='customRestTime'
                   value={customRestTime}

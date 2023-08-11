@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import './Todo.css'
+import { FaToggleOff, FaToggleOn } from 'react-icons/fa';
 
 export default function Todo() {
   const [item, setItem] = useState('');
@@ -63,7 +64,7 @@ export default function Todo() {
     <div className='Todo'>
       <div>
         <button className='toggle-button' onClick={toggleTodo}>
-          Toggle Todo
+        {setShowTodo ? <FaToggleOff /> : <FaToggleOn />} TODO
         </button>
         {showTodo && (
           <>

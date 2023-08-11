@@ -21,7 +21,6 @@ export default function Homepage() {
       </div>
       <div className="middle">
         <Reminder /> 
-        {/* user={user} */}
       </div>
       <div className="bottom-bar">
         <Spotify />

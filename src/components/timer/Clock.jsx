@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Clock.css';
+import { FaToggleOff, FaToggleOn } from 'react-icons/fa';
 
 export default function Clock() {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -38,12 +39,13 @@ export default function Clock() {
 
   return (
     <div className="clock">
-      <button onClick={handleToggleClock}>
-        {showClock ? 'Hide Clock' : 'Show Clock'}
+      <button className='toggle-btn' onClick={handleToggleClock}>
+        {showClock ? <FaToggleOff /> : <FaToggleOn />} CLOCK
       </button>
+      <br />
+      <br />
       {showClock && (
         <>
-          <h1>Clock</h1>
           {formatTime(currentTime)}
         </>
       )}
